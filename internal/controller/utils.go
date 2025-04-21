@@ -3,9 +3,9 @@ package controller
 import (
 	"errors"
 	"fmt"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/data/response"
 	"github.com/gin-gonic/gin"
 
-	"medodsTechTask/internal/data/response"
 	"net"
 	"strings"
 )

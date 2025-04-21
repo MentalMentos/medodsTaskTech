@@ -2,9 +2,9 @@ package repository
 
 import (
 	"context"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/model"
+	"github.com/MentalMentos/medodsTaskTech.git/pkg/logger"
 	"gorm.io/gorm"
-	"medodsTechTask/internal/model"
-	"medodsTechTask/pkg/logger"
 )
 
 type Repository interface {

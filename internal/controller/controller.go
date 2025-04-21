@@ -1,10 +1,10 @@
 package controller
 
 import (
+	"github.com/MentalMentos/medodsTaskTech.git/internal/data/request"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/service"
+	"github.com/MentalMentos/medodsTaskTech.git/pkg/logger"
 	"github.com/gin-gonic/gin"
-	"medodsTechTask/internal/data/request"
-	"medodsTechTask/internal/service"
-	"medodsTechTask/pkg/logger"
 	"net/http"
 )
 

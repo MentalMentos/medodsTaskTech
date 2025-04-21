@@ -2,10 +2,10 @@ package service
 
 import (
 	"context"
-	"medodsTechTask/internal/data/request"
-	"medodsTechTask/internal/data/response"
-	"medodsTechTask/internal/repository"
-	"medodsTechTask/pkg/logger"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/data/request"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/data/response"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/repository"
+	"github.com/MentalMentos/medodsTaskTech.git/pkg/logger"
 )
 
 type AService interface {

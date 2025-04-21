@@ -1,13 +1,13 @@
 package main
 
 import (
+	"github.com/MentalMentos/medodsTaskTech.git/internal/config"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/controller"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/model"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/repository"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/service"
+	zaplogger "github.com/MentalMentos/medodsTaskTech.git/pkg/logger/zap"
 	"github.com/gin-gonic/gin"
-	"medodsTechTask/internal/config"
-	"medodsTechTask/internal/controller"
-	"medodsTechTask/internal/model"
-	"medodsTechTask/internal/repository"
-	"medodsTechTask/internal/service"
-	zaplogger "medodsTechTask/pkg/logger/zap"
 	"net/http"
 )
 

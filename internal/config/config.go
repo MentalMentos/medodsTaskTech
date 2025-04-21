@@ -2,10 +2,10 @@ package config
 
 import (
 	"fmt"
+	"github.com/MentalMentos/medodsTaskTech.git/pkg/helpers"
+	"github.com/MentalMentos/medodsTaskTech.git/pkg/logger"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"medodsTechTask/pkg/helpers"
-	"medodsTechTask/pkg/logger"
 	"os"
 	"sync"
 )

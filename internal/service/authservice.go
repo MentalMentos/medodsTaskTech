@@ -3,14 +3,14 @@ package service
 import (
 	"context"
 	"errors"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/data/request"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/data/response"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/model"
+	"github.com/MentalMentos/medodsTaskTech.git/internal/repository"
+	"github.com/MentalMentos/medodsTaskTech.git/pkg/logger"
+	"github.com/MentalMentos/medodsTaskTech.git/pkg/utils"
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
-	"medodsTechTask/internal/data/request"
-	"medodsTechTask/internal/data/response"
-	"medodsTechTask/internal/model"
-	"medodsTechTask/internal/repository"
-	"medodsTechTask/pkg/logger"
-	"medodsTechTask/pkg/utils"
 )
 
 type AuthService struct {
