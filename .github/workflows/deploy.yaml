@@ -1,0 +1,54 @@
+name: Deploy App
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to deploy'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HOST: root@178.72.138.235
+      DEPLOY_DIRECTORY: /root/apps/medods-task
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag }}
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 178.72.138.235 >> ~/.ssh/known_hosts
+
+      - name: Deploy files via Rsync
+        run: |
+          # Копируем всё, кроме лишнего, на сервер Selectel
+          rsync -avz --exclude='.git' --exclude='bin' ./ ${{ env.HOST }}:${{ env.DEPLOY_DIRECTORY }}
+
+      - name: Create .env from Secrets
+        run: |
+          # Создаем .env на сервере, используя секреты GitHub
+          ssh ${{ env.HOST }} "
+            cd ${{ env.DEPLOY_DIRECTORY }}
+            echo 'PG_DATABASE_NAME=${{ secrets.PG_DATABASE_NAME }}' > .env
+            echo 'PG_USER=${{ secrets.PG_USER }}' >> .env
+            echo 'PG_PASSWORD=${{ secrets.PG_PASSWORD }}' >> .env
+            echo 'PG_PORT=5432' >> .env
+            echo 'MIGRATION_DIR=${{ secrets.MIGRATION_DIR }}' >> .env
+          "
+
+      - name: Start Docker Compose
+        run: |
+          ssh ${{ env.HOST }} "
+            cd ${{ env.DEPLOY_DIRECTORY }}
+            # Пересобираем приложение и мигратор, запускаем в фоне
+            docker compose down
+            docker compose up --build -d
+          "

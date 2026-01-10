@@ -5,25 +5,28 @@ import (
 	"time"
 )
 
+// по хорошему должны брать из переменной окружения
 var jwtSecret = []byte("secret_key")
 
 type Claims struct {
 	UserID int64  `json:"user_id"`
 	Role   string `json:"role"`
+	IP     string `json:"ip"`
 	jwt.RegisteredClaims
 }
 
-// GenerateJWT создает access и refresh токены.
+// создает токены.
 func GenerateJWT(userID int64, role string) (accessToken string, refreshToken string, err error) {
 	// Генерация Access Token
 	accessClaims := &Claims{
 		UserID: userID,
 		Role:   role,
+		IP:     "127.0.0.1",
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(15 * time.Minute)),
 		},
 	}
-	accessToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, accessClaims).SignedString(jwtSecret)
+	accessToken, err = jwt.NewWithClaims(jwt.SigningMethodHS512, accessClaims).SignedString(jwtSecret)
 	if err != nil {
 		return
 	}
@@ -36,11 +39,11 @@ func GenerateJWT(userID int64, role string) (accessToken string, refreshToken st
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(7 * 24 * time.Hour)),
 		},
 	}
-	refreshToken, err = jwt.NewWithClaims(jwt.SigningMethodHS256, refreshClaims).SignedString(jwtSecret)
+	refreshToken, err = jwt.NewWithClaims(jwt.SigningMethodHS512, refreshClaims).SignedString(jwtSecret)
 	return
 }
 
-// ValidateJWT проверяет валидность access токена.
+// проверяет валидность access токена.
 func ValidateJWT(tokenString string) (*Claims, error) {
 	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return jwtSecret, nil

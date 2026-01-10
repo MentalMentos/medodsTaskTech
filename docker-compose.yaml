@@ -28,5 +28,21 @@ services:
       PG_DSN: host=pg port=5432 dbname=postgres user=user password=1234 sslmode=disable
       MIGRATION_DIR: ${MIGRATION_DIR}
 
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile # Создадим его ниже
+    depends_on:
+      pg:
+        condition: service_healthy
+      migrator:
+        condition: service_completed_successfully
+    ports:
+      - "8080:8080" # Замените на ваш порт
+    env_file:
+      - .env
+
+
 volumes:
   postgres_volume:

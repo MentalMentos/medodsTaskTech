@@ -17,10 +17,10 @@ import (
 )
 
 type Auth interface {
-	Register(ctx context.Context, req request.RegisterUserRequest, logger logger.Logger) (*model.AuthResponse, error)
-	Login(ctx context.Context, req request.LoginRequest, logger logger.Logger) (*model.AuthResponse, error)
-	GetAccessToken(ctx context.Context, refreshToken string, logger logger.Logger) (*response.AuthResponse, error)
-	UpdatePassword(ctx context.Context, req request.UpdateUserRequest, logger logger.Logger) (*response.UpdatePasswordResponse, error)
+	Register(ctx context.Context, req request.RegisterUserRequest) (*model.AuthResponse, error)
+	Login(ctx context.Context, req request.LoginRequest) (*model.AuthResponse, error)
+	GetAccessToken(ctx context.Context, refreshToken string) (*response.AuthResponse, error)
+	UpdatePassword(ctx context.Context, req request.UpdateUserRequest) (*response.UpdatePasswordResponse, error)
 }
 
 type AuthService struct {
@@ -46,8 +46,12 @@ func (s *AuthService) Register(ctx context.Context, req request.RegisterUserRequ
 		Name:     req.Name,
 		Email:    req.Email,
 		Password: string(hashedPassword),
-		Role:     "user",
-		IP:       req.IP,
+		Role:     req.Role,
+		IP:       "192.168.123.132",
+	}
+
+	if req.Role == "" {
+		req.Role = "user"
 	}
 
 	_, err = s.repo.Create(ctx, user, s.logger)
