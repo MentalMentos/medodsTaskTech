@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"errors"
+
 	"github.com/MentalMentos/medodsTaskTech/internal/data/request"
 	"github.com/MentalMentos/medodsTaskTech/internal/data/response"
 	"github.com/MentalMentos/medodsTaskTech/internal/repository"
@@ -21,6 +22,8 @@ type Auth interface {
 	Login(ctx context.Context, req request.LoginRequest) (*model.AuthResponse, error)
 	GetAccessToken(ctx context.Context, refreshToken string) (*response.AuthResponse, error)
 	UpdatePassword(ctx context.Context, req request.UpdateUserRequest) (*response.UpdatePasswordResponse, error)
+
+	SendNotify(req request.SendNotificationReq) error
 }
 
 type AuthService struct {

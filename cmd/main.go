@@ -1,6 +1,8 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/MentalMentos/medodsTaskTech/internal/config"
 	"github.com/MentalMentos/medodsTaskTech/internal/controller"
 	"github.com/MentalMentos/medodsTaskTech/internal/model"
@@ -10,7 +12,6 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/gin-gonic/gin"
 	_ "github.com/go-playground/validator/v10"
-	"net/http"
 )
 
 func main() {
@@ -39,6 +40,11 @@ func main() {
 		authRoutes.POST("/login", authController.Login)                   // Вход
 		authRoutes.POST("/refresh", authController.RefreshToken)          // Обновление токена
 		authRoutes.PUT("/update-password", authController.UpdatePassword) // Обновление пароля
+	}
+
+	notifyRoutes := router.Group("/notify")
+	{
+		notifyRoutes.POST("/send-notify-webhook", authController.SendMessage)
 	}
 
 	if err := router.Run(":8080"); err != nil {

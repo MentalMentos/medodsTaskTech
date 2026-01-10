@@ -25,23 +25,24 @@ services:
       pg:
         condition: service_healthy
     environment:
-      PG_DSN: host=pg port=5432 dbname=postgres user=user password=1234 sslmode=disable
-      MIGRATION_DIR: ${MIGRATION_DIR}
-
+      PG_DSN: "host=pg port=5432 dbname=postgres user=user password=1234 sslmode=disable"
+      MIGRATION_DIR: "./migrations"
+    # Добавьте volume для .env если нужно
+    volumes:
+      - ./.env:/root/.env:ro
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile # Создадим его ниже
-    depends_on:
-      pg:
-        condition: service_healthy
-      migrator:
-        condition: service_completed_successfully
+    build: .
     ports:
-      - "8080:8080" # Замените на ваш порт
-    env_file:
-      - .env
+      - "8080:8080"
+    environment:
+      PG_HOST: pg  # ← Явно передаём
+      PG_PORT: 5432
+      PG_USER: user
+      PG_PASSWORD: 1234
+      PG_DATABASE_NAME: postgres
+    depends_on:
+      - pg
 
 
 volumes:

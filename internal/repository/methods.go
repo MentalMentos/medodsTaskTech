@@ -104,3 +104,7 @@ func (r *RepoImpl) UpdateIP(ctx context.Context, us model.User, ip string, logge
 	}
 	return us, nil
 }
+
+func (r *RepoImpl) AddDestinationTaskToQueue(ctx context.Context, us model.User, logger logger.Logger) (model.User, error) {
+
+}
