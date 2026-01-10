@@ -49,8 +49,11 @@ jobs:
 
       - name: Start Docker Compose
         run: |
-          ssh -o StrictHostKeyChecking=no -o PubkeyAcceptedAlgorithms=+ssh-rsa ${{ env.HOST }} "
+          ssh -o StrictHostKeyChecking=no \
+              -o PubkeyAcceptedAlgorithms=+ssh-rsa \
+              -o ServerAliveInterval=30 \
+              -o ServerAliveCountMax=5 \
+              ${{ env.HOST }} "
             cd ${{ env.DEPLOY_DIRECTORY }}
-            docker compose down
-            docker compose up --build -d
+            timeout 600 docker compose up --build -d
           "
