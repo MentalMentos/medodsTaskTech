@@ -20,12 +20,16 @@ jobs:
         with:
           ref: ${{ github.event.inputs.tag }}
 
-      - name: Set up SSH key
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy files via Rsync
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 178.72.138.235 >> ~/.ssh/known_hosts
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no -o PubkeyAcceptedAlgorithms=+ssh-rsa" \
+          --exclude='.git' --exclude='bin' \
+          ./ root@178.72.138.235:/root/apps/medods-task
 
       - name: Deploy files via Rsync
         run: |
