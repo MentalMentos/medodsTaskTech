@@ -3,10 +3,11 @@ package repository
 import (
 	"context"
 	"errors"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/data/request"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/logger"
 
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/model"
+	"github.com/MentalMentos/medodsTaskTech/internal/data/request"
+	"github.com/MentalMentos/medodsTaskTech/pkg/logger"
+
+	"github.com/MentalMentos/medodsTaskTech/internal/model"
 	"gorm.io/gorm"
 )
 

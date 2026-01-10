@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/repository"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/logger"
+	"github.com/MentalMentos/medodsTaskTech/internal/repository"
+	"github.com/MentalMentos/medodsTaskTech/pkg/logger"
 )
 
 type Service struct {

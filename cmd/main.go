@@ -1,12 +1,12 @@
 package main
 
 import (
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/config"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/controller"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/model"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/repository"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/service"
-	zaplogger "github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/logger/zap"
+	"github.com/MentalMentos/medodsTaskTech/internal/config"
+	"github.com/MentalMentos/medodsTaskTech/internal/controller"
+	"github.com/MentalMentos/medodsTaskTech/internal/model"
+	"github.com/MentalMentos/medodsTaskTech/internal/repository"
+	"github.com/MentalMentos/medodsTaskTech/internal/service"
+	zaplogger "github.com/MentalMentos/medodsTaskTech/pkg/logger/zap"
 	"github.com/gin-gonic/gin"
 	_ "github.com/gin-gonic/gin"
 	_ "github.com/go-playground/validator/v10"

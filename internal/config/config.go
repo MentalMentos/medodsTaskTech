@@ -2,8 +2,8 @@ package config
 
 import (
 	"fmt"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/helpers"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/logger"
+	"github.com/MentalMentos/medodsTaskTech/pkg/helpers"
+	"github.com/MentalMentos/medodsTaskTech/pkg/logger"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"os"

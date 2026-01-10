@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/data/request"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/service"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/logger"
+	"github.com/MentalMentos/medodsTaskTech/internal/data/request"
+	"github.com/MentalMentos/medodsTaskTech/internal/service"
+	"github.com/MentalMentos/medodsTaskTech/pkg/logger"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

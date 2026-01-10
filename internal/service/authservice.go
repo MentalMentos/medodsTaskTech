@@ -3,16 +3,16 @@ package service
 import (
 	"context"
 	"errors"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/data/request"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/data/response"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/repository"
-	_ "github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/repository"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/helpers"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/logger"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/pkg/utils"
+	"github.com/MentalMentos/medodsTaskTech/internal/data/request"
+	"github.com/MentalMentos/medodsTaskTech/internal/data/response"
+	"github.com/MentalMentos/medodsTaskTech/internal/repository"
+	_ "github.com/MentalMentos/medodsTaskTech/internal/repository"
+	"github.com/MentalMentos/medodsTaskTech/pkg/helpers"
+	"github.com/MentalMentos/medodsTaskTech/pkg/logger"
+	"github.com/MentalMentos/medodsTaskTech/pkg/utils"
 
-	_ "github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/data/response"
-	"github.com/MentalMentos/ginWeb-Tonik/ginWeb/internal/model"
+	_ "github.com/MentalMentos/medodsTaskTech/internal/data/response"
+	"github.com/MentalMentos/medodsTaskTech/internal/model"
 	"golang.org/x/crypto/bcrypt"
 )
 
