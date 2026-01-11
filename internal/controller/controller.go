@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/MentalMentos/medodsTaskTech/internal/data/request"
@@ -113,12 +114,19 @@ func (controller *AuthController) HandleYa(c *gin.Context) {
 
 	// Простой ответ
 	response := response2.ResponseYa{
-		ResponseResponse: response2.Responsee{
-			Text:       "Привет! Я навык для Алисы!",
-			Tts:        "Привет! Я навык для Алисы!",
-			EndSession: false,
+		Response: &response2.ResponseResponse{
+			Text:       "Ура ты достиг навыка",
+			Tts:        fmt.Sprintf(`<speaker audio=\"alice-sounds-game-win-1.opus\">%s`, "Ура ты достиг навыка"),
+			Card:       nil,
+			Buttons:    nil,
+			EndSession: true,
+			Directives: struct{}{},
 		},
-		Version: req.Version,
+		SessionState:     nil,
+		UserStateUpdate:  nil,
+		ApplicationState: nil,
+		Analytics:        nil,
+		Version:          req.Version,
 	}
 
 	c.JSON(http.StatusOK, response)

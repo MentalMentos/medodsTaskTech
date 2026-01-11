@@ -1,25 +1,25 @@
 package response
 
 // --------
-type ResponseYa struct {
-	ResponseResponse Responsee `json:"response"`
-	Version          string    `json:"version"`
-}
-
-type Responsee struct {
-	Text       string `json:"text"`
-	Tts        string `json:"tts"`
-	EndSession bool   `json:"end_session"`
-}
-
 //type ResponseYa struct {
-//	Response         *ResponseResponse  `json:"response"`
-//	SessionState     *IntValue          `json:"session_state"`
-//	UserStateUpdate  *IntValue          `json:"user_state_update"`
-//	ApplicationState *IntValue          `json:"application_state"`
-//	Analytics        *ResponseAnalytics `json:"analytics"`
-//	Version          string             `json:"version"`
+//	ResponseResponse Responsee `json:"response"`
+//	Version          string    `json:"version"`
 //}
+//
+//type Responsee struct {
+//	Text       string `json:"text"`
+//	Tts        string `json:"tts"`
+//	EndSession bool   `json:"end_session"`
+//}
+
+type ResponseYa struct {
+	Response         *ResponseResponse  `json:"response"`
+	SessionState     *IntValue          `json:"session_state"`
+	UserStateUpdate  *IntValue          `json:"user_state_update"`
+	ApplicationState *IntValue          `json:"application_state"`
+	Analytics        *ResponseAnalytics `json:"analytics"`
+	Version          string             `json:"version"`
+}
 
 type ResponseResponse struct {
 	Text       string            `json:"text"`

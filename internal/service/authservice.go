@@ -24,6 +24,8 @@ type Auth interface {
 	UpdatePassword(ctx context.Context, req request.UpdateUserRequest) (*response.UpdatePasswordResponse, error)
 
 	SendNotify(req request.SendNotificationReq) error
+
+	RunScenario(token string, scenarioID string) error
 }
 
 type AuthService struct {
