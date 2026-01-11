@@ -42,16 +42,7 @@ func main() {
 		authRoutes.PUT("/update-password", authController.UpdatePassword) // Обновление пароля
 	}
 
-	router.Any("/alice-webhook", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"response": gin.H{
-				"text":        "Привет! Я навык Алисы!",
-				"tts":         "Привет! Я навык Алисы!",
-				"end_session": false,
-			},
-			"version": "1.0",
-		})
-	})
+	router.Any("/alice-webhook", authController.HandleYa)
 
 	notifyRoutes := router.Group("/notify")
 	{

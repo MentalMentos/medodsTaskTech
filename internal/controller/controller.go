@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/MentalMentos/medodsTaskTech/internal/data/request"
+	response2 "github.com/MentalMentos/medodsTaskTech/internal/data/response"
 	"github.com/MentalMentos/medodsTaskTech/internal/service"
 	"github.com/MentalMentos/medodsTaskTech/pkg/logger"
 	"github.com/gin-gonic/gin"
@@ -101,4 +102,24 @@ func (controller *AuthController) SendMessage(c *gin.Context) {
 	}
 
 	JsonResponse(c, http.StatusOK, "Notify Done Successful", nil)
+}
+
+func (controller *AuthController) HandleYa(c *gin.Context) {
+	var req request.Request
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	// Простой ответ
+	response := response2.ResponseYa{
+		Response: &response2.ResponseResponse{
+			Text:       "Привет! Я навык для Алисы!",
+			Tts:        "Привет! Я навык для Алисы!",
+			EndSession: false,
+		},
+		Version: req.Version,
+	}
+
+	c.JSON(http.StatusOK, response)
 }
