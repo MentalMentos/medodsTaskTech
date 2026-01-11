@@ -44,7 +44,7 @@ func main() {
 
 	notifyRoutes := router.Group("/notify")
 	{
-		notifyRoutes.POST("/send-notify-webhook", authController.SendMessage)
+		notifyRoutes.Any("/send-notify-webhook", authController.SendMessage)
 	}
 
 	if err := router.Run(":8080"); err != nil {
