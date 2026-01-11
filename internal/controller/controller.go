@@ -113,7 +113,7 @@ func (controller *AuthController) HandleYa(c *gin.Context) {
 
 	// Простой ответ
 	response := response2.ResponseYa{
-		Response: &response2.ResponseResponse{
+		ResponseResponse: response2.Responsee{
 			Text:       "Привет! Я навык для Алисы!",
 			Tts:        "Привет! Я навык для Алисы!",
 			EndSession: false,

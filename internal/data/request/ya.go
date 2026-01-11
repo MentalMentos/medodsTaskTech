@@ -4,12 +4,31 @@ import "github.com/MentalMentos/medodsTaskTech/internal/data/response"
 
 // -----------------------
 type Request struct {
-	Meta    *RequestMeta    `json:"meta"`
-	Request *RequestRequest `json:"request"`
-	Session *RequestSession `json:"session"`
-	State   *RequestState   `json:"state"`
-	Version string          `json:"version"`
+	Meta struct {
+		Locale   string `json:"locale"`
+		Timezone string `json:"timezone"`
+	} `json:"meta"`
+	Request struct {
+		Command string `json:"command"`
+		Type    string `json:"type"`
+	} `json:"request"`
+	Session struct {
+		New       bool   `json:"new"`
+		MessageID int    `json:"message_id"`
+		SessionID string `json:"session_id"`
+		SkillID   string `json:"skill_id"`
+		UserID    string `json:"user_id"`
+	} `json:"session"`
+	Version string `json:"version"`
 }
+
+//type Request struct {
+//	Meta    *RequestMeta    `json:"meta"`
+//	Request *RequestRequest `json:"request"`
+//	Session *RequestSession `json:"session"`
+//	State   *RequestState   `json:"state"`
+//	Version string          `json:"version"`
+//}
 
 type RequestMeta struct {
 	Locale     string                `json:"locale"`
