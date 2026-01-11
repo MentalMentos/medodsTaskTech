@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+
 	"github.com/MentalMentos/medodsTaskTech/internal/model"
 	"github.com/MentalMentos/medodsTaskTech/pkg/logger"
 	"gorm.io/gorm"
@@ -16,6 +17,8 @@ type Repository interface {
 	GetByEmail(ctx context.Context, email string, logger logger.Logger) (model.User, error)
 	GetByID(ctx context.Context, userID int64, logger logger.Logger) (model.User, error)
 	GetAll(ctx context.Context, logger logger.Logger) ([]model.User, error)
+
+	AddDestinationTaskToQueue(ctx context.Context, us model.User, logger logger.Logger) (model.User, error)
 }
 
 type Repo struct {
